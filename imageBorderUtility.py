@@ -29,7 +29,7 @@ files = [f for f in listdir(argv[1]) if isfile(join(argv[1], f))]
 images = [f for f in files if f.split('.')[1] in ("JPEG", "jpeg", "jpg", "JPG", "png", "PNG") ]
 
 for image in images:
-    original = Image.open(image)
+    original = Image.open(argv[1] + "/" + image)
 
     #Tallest size of image plus a border on each side
     newSize = max(original.width, original.height) + (border * 2)
@@ -39,4 +39,4 @@ for image in images:
 
     filenameParts = image.split('.')
     #newImage.show()
-    newImage.save(f'{filenameParts[0]}_wBorder.{filenameParts[1]}')
+    newImage.save(f'{argv[1]}/{filenameParts[0]}_wBorder.{filenameParts[1]}')
